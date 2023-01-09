@@ -1,3 +1,5 @@
+/* eslint-disable  */ 
+
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -10,7 +12,8 @@ function App() {
   // a state에 보관했던 자료가 나옴
   // b 는 states 변경을 도와주는 함수
 
-  let [글제목, b] = useState('남자 코드 추천');
+  let [글제목, b] = useState(['남자 코드 추천', '강남우동 맛집', '파이썬독학']);
+  let [like, changeLike] = useState(0);
 
   return (
     <div className="App">
@@ -18,9 +21,20 @@ function App() {
         <h4 style={ {color: "red", fontSize: "16px"} }>블로그임</h4>
       </div>
       <div className="list">
-        <h4>{ 글제목 }</h4>
+        <h4>{ 글제목[0] } <span onClick={ () => { changeLike(like+1) } }>👍</span> { like } </h4>
         <p>2월 17일 발핼</p>
       </div>
+
+      <div className="list">
+        <h4>{ 글제목[1] }</h4>
+        <p>2월 17일 발핼</p>
+      </div>
+      
+      <div className="list">
+        <h4>{ 글제목[2] }</h4>
+        <p>2월 17일 발핼</p>
+      </div>
+
       <h4 id={post}>{ post }</h4>
     </div>
   );
